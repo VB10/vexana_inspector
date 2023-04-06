@@ -1,7 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
 
 import 'package:vexana_inspector/vexana_inspector.dart';
@@ -9,37 +13,49 @@ import 'package:vexana_inspector/vexana_inspector.dart';
 part 'network_detail_state.dart';
 
 class NetworkDetailCubit extends Cubit<NetworkDetailState> {
-  NetworkDetailCubit(InspectorManager inspectorManager) : super(const NetworkDetailState()) {
+  NetworkDetailCubit(InspectorManager inspectorManager)
+      : super(const NetworkDetailState()) {
     inspectorManager.update(this);
   }
 
   late NavigatorObserver navigatorObserver;
-  void addResponse(Response<dynamic> item) {}
 
-  void addRequest(RequestOptions item) {
-    final model = ApiModel(
-      url: item.uri.toString(),
-      method: item.method,
-      headers: item.headers,
-      body: item.data.toString(),
-      name: '',
+  void addResponse(Response<dynamic> item) {
+    final currentItems = state.items.toList();
+    final uriWithName =
+        '${item.requestOptions.uri}/${item.requestOptions.method}';
+    final index = currentItems.indexOrNull(
+      (element) => element.name == uriWithName,
     );
 
-    final currentItems = state.items;
-    if (currentItems.any((element) => element.url == model.url)) {
-      final index = currentItems.indexWhere((element) => element.url == model.url);
+    if (index != null) {
+      final model = currentItems[index].copyWith(
+        status: item.statusCode ?? HttpStatus.notFound,
+        body: jsonEncode(item.data),
+        time: DateTime.now(),
+      );
       currentItems[index] = model;
       emit(state.copyWith(items: currentItems));
       return;
     }
+  }
 
-    emit(state.copyWith(items: [model]));
+  void addRequest(RequestOptions item) {
+    final model = ApiModel(
+      time: DateTime.now(),
+      url: item.uri.toString(),
+      method: item.method,
+      headers: item.headers,
+      body: item.data.toString(),
+      status: HttpStatus.continue_,
+    );
+
+    final currentItems = state.items.toList();
+    emit(state.copyWith(items: [...currentItems, model]));
   }
 
   void openDetail() {
-    navigatorObserver.navigator?.push(MaterialPageRoute(builder: (context) => Test(items: state.items)));
-
-    // emit(state.copyWith(isDetailPage: true));
+    emit(state.copyWith(isDetailPage: true));
   }
 
   void updateObserver(NavigatorObserver navigatorObserver) {
