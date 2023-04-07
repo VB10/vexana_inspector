@@ -9,6 +9,7 @@ class InspectorManager {
 
   late NetworkDetailCubit _networkDetailCubit;
   static final NavigatorObserver navigatorObserver = NavigatorObserver();
+
   void update(NetworkDetailCubit value) {
     _networkDetailCubit = value;
     _networkDetailCubit.updateObserver(navigatorObserver);

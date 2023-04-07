@@ -20,15 +20,36 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
+        title: FittedBox(
+          child: Text(
+            widget.apiModel.name,
+          ),
+        ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Share.share(HttpLoggerManager.makeCurlString(widget.apiModel));
+          PopupMenuButton(
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  child: TextButton(
+                    onPressed: () {
+                      Share.share(widget.apiModel.body);
+                    },
+                    child: const Text('Share Json body'),
+                  ),
+                ),
+                PopupMenuItem(
+                  child: TextButton(
+                    onPressed: () {
+                      Share.share(
+                        HttpLoggerManager.makeCurlString(widget.apiModel),
+                      );
+                    },
+                    child: const Text('Share Curl'),
+                  ),
+                ),
+              ];
             },
-            child: const Text(
-              'Share curl',
-              style: TextStyle(color: Colors.white),
-            ),
           )
         ],
       ),

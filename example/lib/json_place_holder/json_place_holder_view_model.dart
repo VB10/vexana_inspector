@@ -35,6 +35,27 @@ abstract class JsonPlaceHolderViewModel extends State<JsonPlaceHolder> {
       isErrorDialog: true,
     );
 
+    final response2 = await networkManager.send<EmptyModel, EmptyModel>(
+      '/posts/1',
+      parseModel: EmptyModel(),
+      method: RequestType.GET,
+      isErrorDialog: true,
+    );
+
+    final response3 = await networkManager.send<EmptyModel, EmptyModel>(
+      '/posts/1/comments',
+      parseModel: EmptyModel(),
+      method: RequestType.GET,
+      isErrorDialog: true,
+    );
+
+    final response4 = await networkManager.send<EmptyModel, EmptyModel>(
+      '/comments?postId=1',
+      parseModel: EmptyModel(),
+      method: RequestType.GET,
+      isErrorDialog: true,
+    );
+
     if (response.data is List) {
       posts = response.data ?? [];
     }

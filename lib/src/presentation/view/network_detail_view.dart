@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vexana_inspector/src/core/inspector_manager.dart';
 import 'package:vexana_inspector/src/presentation/cubit/network_detail_cubit.dart';
-
+import 'package:vexana_inspector/src/presentation/cubit/network_detail_state.dart';
 import 'package:vexana_inspector/src/presentation/view/network_inspect_view.dart';
 
 class NetworkDetailView extends StatefulWidget {
@@ -23,21 +23,30 @@ class _NetworkDetailViewState extends State<NetworkDetailView> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => _cubit,
       child: BlocListener<NetworkDetailCubit, NetworkDetailState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.isDetailPage ?? false) {
             final navigator = _cubit.navigatorObserver.navigator;
             if (navigator == null) {
               return;
             }
-            navigator.push(
+            final _ = await navigator.push<void>(
               MaterialPageRoute<void>(
-                builder: (context) => NetworkInspectView(items: state.items),
+                builder: (context) => NetworkInspectView(
+                  cubit: _cubit,
+                ),
               ),
             );
+            _cubit.closeDetail();
           }
         },
         child: widget.child,
