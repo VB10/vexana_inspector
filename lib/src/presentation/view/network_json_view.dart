@@ -1,14 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_json_view/flutter_json_view.dart';
+import 'package:kartal/kartal.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
 import 'package:vexana_inspector/src/utility/manager/http_logger_manager.dart';
+import 'package:vexana_inspector/src/utility/string_values.dart';
 
 class NetworkJsonView extends StatefulWidget {
   const NetworkJsonView({
-    super.key,
     required this.apiModel,
+    super.key,
   });
   final ApiModel apiModel;
   @override
@@ -30,22 +32,26 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
           PopupMenuButton(
             itemBuilder: (context) {
               return [
-                PopupMenuItem(
+                PopupMenuItem<void>(
                   child: TextButton(
-                    onPressed: () {
-                      Share.share(widget.apiModel.body);
+                    onPressed: () async {
+                      await Share.share(widget.apiModel.body);
+                      if (!mounted) return;
+                      await context.pop();
                     },
-                    child: const Text('Share Json body'),
+                    child: const Text(StringValues.shareJsonTitle),
                   ),
                 ),
-                PopupMenuItem(
+                PopupMenuItem<void>(
                   child: TextButton(
-                    onPressed: () {
-                      Share.share(
+                    onPressed: () async {
+                      await Share.share(
                         HttpLoggerManager.makeCurlString(widget.apiModel),
                       );
+                      if (!mounted) return;
+                      await context.pop();
                     },
-                    child: const Text('Share Curl'),
+                    child: const Text(StringValues.shareCurlTitle),
                   ),
                 ),
               ];

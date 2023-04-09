@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NetworkDetailView(
+      isEnableShake: true,
       child: MaterialApp(
         navigatorObservers: [InspectorManager.navigatorObserver],
         title: 'Material App',

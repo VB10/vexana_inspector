@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
 
 @immutable
+
+/// This class is used to generate the necessary command.
 class HttpLoggerManager {
   const HttpLoggerManager._();
 

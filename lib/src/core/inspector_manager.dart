@@ -1,33 +1,50 @@
+// ignore_for_file: comment_references
+
 import 'package:flutter/material.dart';
 import 'package:vexana_inspector/src/core/dio_custom_interceptor.dart';
 
-import 'package:vexana_inspector/src/presentation/cubit/network_detail_cubit.dart';
+import 'package:vexana_inspector/src/core/inspector_detail.dart';
+import 'package:vexana_inspector/vexana_inspector.dart';
 
 @immutable
+
+/// It class helps to manage the network inspector
+/// You just call the [InspectorManager.instance] to access the [DioCustomInterceptors]
 class InspectorManager {
   InspectorManager._();
 
-  late NetworkDetailCubit _networkDetailCubit;
+  /// Creates a new instance of the NavigatorObserver class.
   static final NavigatorObserver navigatorObserver = NavigatorObserver();
 
-  void update(NetworkDetailCubit value) {
-    _networkDetailCubit = value;
-    _networkDetailCubit.updateObserver(navigatorObserver);
-  }
-
+  /// Singleton instance of the InspectorManager class.
   static final InspectorManager instance = InspectorManager._();
+  static final InspectorDetail _detail = InspectorDetail.instance;
 
-  final interceptor = DioCustomInterceptors(
+  /// [DioCustomInterceptors] is a class that allows us to intercept the request,
+  ///  response and error
+  /// and we can use it to add to our cubit
+  /// that way we can see the response and error in the detail screen.
+  /// [onResponseChanged] and [onErrorChanged] will be called whenever there is
+  ///  a response or error
+  /// and we can add it to our cubit
+  /// [onRequestChanged] will be called whenever there is a request
+  /// and we can add it to our cubit
+  final DioCustomInterceptors interceptor = DioCustomInterceptors(
     onResponseChanged: (response) {
-      instance._networkDetailCubit.addResponse(response);
+      _detail.networkDetailCubit.addNetworkResponse(response);
     },
-    onErrorChanged: (value) {},
+    onErrorChanged: (value) {
+      _detail.networkDetailCubit.addNetworkError(value);
+    },
     onRequestChanged: (value) {
-      instance._networkDetailCubit.addRequest(value);
+      _detail.networkDetailCubit.addNetworkRequest(value);
     },
   );
 
-  void open() {
-    _networkDetailCubit.openDetail();
+  /// Opens the [NetworkDetailView] screen.
+  /// Used to navigate to the network detail screen in response to
+  /// tapping on a network in the network list.
+  static void open() {
+    _detail.networkDetailCubit.openDetail();
   }
 }

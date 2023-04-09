@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/vb10/development/flutter
-FLUTTER_APPLICATION_PATH=/Users/vb10/Desktop/development/package/vexana_inspector
+FLUTTER_ROOT=/Users/vb/development/flutter
+FLUTTER_APPLICATION_PATH=/Users/vb/Desktop/business/package/vexana_inspector
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build

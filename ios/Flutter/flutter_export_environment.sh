@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/vb10/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/vb10/Desktop/development/package/vexana_inspector"
+export "FLUTTER_ROOT=/Users/vb/development/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/vb/Desktop/business/package/vexana_inspector"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
