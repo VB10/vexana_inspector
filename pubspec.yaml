@@ -1,9 +1,11 @@
 name: vexana_inspector
-description: A new Flutter package project.
-version: 0.0.1
-homepage: www.vexana.com
+description: Vexana Inspector is a package that helps you to debug your network requests.
+version: 1.0.0
+homepage: https://pub.dev/publishers/vb10.dev
+repository: https://github.com/VB10/vexana_inspector
+
 environment:
-  sdk: ">=2.19.5 <3.0.0"
+  sdk: ">=2.18.3 <3.0.0"
   flutter: ">=1.17.0"
 dependencies:
   flutter:
