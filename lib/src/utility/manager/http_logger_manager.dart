@@ -12,11 +12,9 @@ class HttpLoggerManager {
   /// the model.
   static String makeCurlString(ApiModel apiModel) {
     // Create a map with the headers
-    final headers =
-        apiModel.headers.map((key, value) => MapEntry(key, '$key: $value'));
+    final headers = apiModel.headers.map((key, value) => MapEntry(key, '$key: $value'));
     // Create a string with the headers
-    final headerString =
-        headers.entries.map((e) => "-H '${e.value}'").join(' ');
+    final headerString = headers.entries.map((e) => "-H '${e.value}'").join(' ');
     // Create a string with the body
     final bodyString = apiModel.body.isNotEmpty ? "-d '${apiModel.body}' " : '';
 

@@ -5,7 +5,7 @@ homepage: https://pub.dev/publishers/vb10.dev
 repository: https://github.com/VB10/vexana_inspector
 
 environment:
-  sdk: ">=2.18.3 <3.0.0"
+  sdk: ">=2.18.3 <4.0.0"
   flutter: ">=1.17.0"
 dependencies:
   flutter:

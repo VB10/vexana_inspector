@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:vexana_inspector/src/presentation/cubit/network_detail_cubit.dart';
 
 /// This class is a singleton that is used to access the NetworkDetailCubit
@@ -11,6 +13,7 @@ class InspectorDetail {
   /// The [InspectorDetail] that should be used when the user requests the
   /// highest level of detail.
   ///
+  // ignore: comment_references
   /// This is the default value returned by [InspectorService.getDetailsSubtree].
 
   static final InspectorDetail instance = InspectorDetail._();

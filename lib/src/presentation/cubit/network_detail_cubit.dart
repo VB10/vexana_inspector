@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
 import 'package:vexana_inspector/src/presentation/cubit/network_detail_state.dart';
@@ -126,8 +126,7 @@ class NetworkDetailCubit extends Cubit<NetworkDetailState> {
     final currentItems = state.items.toList();
     final uriWithName = '${requestOptions.uri}/${requestOptions.method}';
     final index = currentItems.indexOrNull(
-      (element) =>
-          element.name == uriWithName && element.status == HttpStatus.continue_,
+      (element) => element.name == uriWithName && element.status == HttpStatus.continue_,
     );
 
     return index;
