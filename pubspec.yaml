@@ -1,6 +1,6 @@
 name: vexana_inspector
 description: Vexana Inspector is a package that helps you to debug your network requests.
-version: 1.0.0
+version: 1.0.1
 homepage: https://pub.dev/publishers/vb10.dev
 repository: https://github.com/VB10/vexana_inspector
 
@@ -20,7 +20,6 @@ dependencies:
 
   # Utils
   kartal: ^2.8.0
-  share_plus: ^6.3.4
   flutter_json_view: ^1.0.0
   shake: ^2.2.0
 

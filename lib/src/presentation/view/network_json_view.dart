@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_json_view/flutter_json_view.dart';
 import 'package:kartal/kartal.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
 import 'package:vexana_inspector/src/utility/manager/http_logger_manager.dart';
 import 'package:vexana_inspector/src/utility/string_values.dart';
@@ -35,7 +34,7 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
                 PopupMenuItem<void>(
                   child: TextButton(
                     onPressed: () async {
-                      await Share.share(widget.apiModel.body);
+                      await widget.apiModel.body.share();
                       if (!mounted) return;
                       await context.pop();
                     },
@@ -45,9 +44,9 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
                 PopupMenuItem<void>(
                   child: TextButton(
                     onPressed: () async {
-                      await Share.share(
-                        HttpLoggerManager.makeCurlString(widget.apiModel),
-                      );
+                      await HttpLoggerManager.makeCurlString(widget.apiModel)
+                          .share();
+
                       if (!mounted) return;
                       await context.pop();
                     },
