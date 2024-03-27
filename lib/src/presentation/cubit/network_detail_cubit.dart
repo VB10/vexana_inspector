@@ -125,7 +125,7 @@ class NetworkDetailCubit extends Cubit<NetworkDetailState> {
   int? _findItem(RequestOptions requestOptions) {
     final currentItems = state.items.toList();
     final uriWithName = '${requestOptions.uri}/${requestOptions.method}';
-    final index = currentItems.indexOrNull(
+    final index = currentItems.ext.indexOrNull(
       (element) => element.name == uriWithName && element.status == HttpStatus.continue_,
     );
 

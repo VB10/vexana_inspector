@@ -47,7 +47,7 @@ class NetworkListView extends StatelessWidget {
                         ],
                       ),
                       onTap: () {
-                        context.navigateToPage(
+                        context.route.navigateToPage(
                           NetworkJsonView(apiModel: item),
                         );
                       },

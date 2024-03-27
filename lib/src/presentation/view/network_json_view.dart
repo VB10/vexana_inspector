@@ -34,9 +34,9 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
                 PopupMenuItem<void>(
                   child: TextButton(
                     onPressed: () async {
-                      await widget.apiModel.body.share();
+                      await widget.apiModel.body.ext.share();
                       if (!mounted) return;
-                      await context.pop();
+                      await context.route.pop();
                     },
                     child: const Text(StringValues.shareJsonTitle),
                   ),
@@ -44,11 +44,11 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
                 PopupMenuItem<void>(
                   child: TextButton(
                     onPressed: () async {
-                      await HttpLoggerManager.makeCurlString(widget.apiModel)
+                      await HttpLoggerManager.makeCurlString(widget.apiModel).ext
                           .share();
 
                       if (!mounted) return;
-                      await context.pop();
+                      await context.route.pop();
                     },
                     child: const Text(StringValues.shareCurlTitle),
                   ),
