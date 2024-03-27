@@ -2,7 +2,9 @@
 
 import 'package:equatable/equatable.dart';
 
+/// Api model for inspector
 class ApiModel extends Equatable {
+  /// Api model for inspector
   const ApiModel({
     required this.url,
     required this.method,
@@ -12,13 +14,15 @@ class ApiModel extends Equatable {
     required this.time,
   });
 
-  String get name => '$url/$method';
   final String url;
   final String method;
   final Map<String, dynamic> headers;
   final String body;
   final int status;
   final DateTime time;
+
+  /// Get name of the api
+  String get name => '$url/$method';
 
   @override
   List<Object> get props {

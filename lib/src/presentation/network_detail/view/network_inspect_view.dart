@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import 'package:vexana_inspector/src/presentation/cubit/network_detail_cubit.dart';
-import 'package:vexana_inspector/src/presentation/widget/network_detail_list_view.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_cubit.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/widget/network_detail_list_view.dart';
 import 'package:vexana_inspector/src/utility/string_values.dart';
 
 @immutable
 
 /// NetworkInspectView is a view that shows the network requests.
-class NetworkInspectView extends StatelessWidget {
+final class NetworkInspectView extends StatelessWidget {
   /// It takes a [NetworkDetailCubit] as a parameter.
   /// Cubit is used to get the network requests.
   const NetworkInspectView({
@@ -27,7 +27,6 @@ class NetworkInspectView extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverAppBar(
               title: const Text(StringValues.networkDetail),
-              // expandedHeight: context.dynamicHeight(.1),
               pinned: true,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
@@ -45,7 +44,7 @@ class NetworkInspectView extends StatelessWidget {
                   prefixIcon: Icon(Icons.search),
                 ),
               ),
-            )
+            ),
           ],
           body: const NetworkListView(),
         ),

@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
-import 'package:vexana_inspector/src/presentation/cubit/network_detail_cubit.dart';
-import 'package:vexana_inspector/src/presentation/cubit/network_detail_state.dart';
-import 'package:vexana_inspector/src/presentation/view/network_json_view.dart';
-import 'package:vexana_inspector/src/presentation/widget/status_color_box.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_cubit.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_state.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/view/network_json_view.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/widget/status_color_box.dart';
 
 @immutable
 
 /// NetworkListView is a view that shows the network requests.
 class NetworkListView extends StatelessWidget {
+  /// Creates a [NetworkListView] widget.
   const NetworkListView({super.key});
 
   @override

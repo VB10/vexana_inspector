@@ -1,12 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_json_view/flutter_json_view.dart';
-import 'package:kartal/kartal.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
-import 'package:vexana_inspector/src/utility/manager/http_logger_manager.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/view/mixin/network_json_view_mixin.dart';
 import 'package:vexana_inspector/src/utility/string_values.dart';
 
-class NetworkJsonView extends StatefulWidget {
+final class NetworkJsonView extends StatefulWidget {
   const NetworkJsonView({
     required this.apiModel,
     super.key,
@@ -16,7 +15,8 @@ class NetworkJsonView extends StatefulWidget {
   State<NetworkJsonView> createState() => _NetworkJsonViewState();
 }
 
-class _NetworkJsonViewState extends State<NetworkJsonView> {
+class _NetworkJsonViewState extends State<NetworkJsonView>
+    with NetworkJsonViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,29 +33,19 @@ class _NetworkJsonViewState extends State<NetworkJsonView> {
               return [
                 PopupMenuItem<void>(
                   child: TextButton(
-                    onPressed: () async {
-                      await widget.apiModel.body.ext.share();
-                      if (!mounted) return;
-                      await context.route.pop();
-                    },
+                    onPressed: shareJsonBody,
                     child: const Text(StringValues.shareJsonTitle),
                   ),
                 ),
                 PopupMenuItem<void>(
                   child: TextButton(
-                    onPressed: () async {
-                      await HttpLoggerManager.makeCurlString(widget.apiModel).ext
-                          .share();
-
-                      if (!mounted) return;
-                      await context.route.pop();
-                    },
+                    onPressed: shareCurlBody,
                     child: const Text(StringValues.shareCurlTitle),
                   ),
                 ),
               ];
             },
-          )
+          ),
         ],
       ),
       body: JsonView.string(widget.apiModel.body),
