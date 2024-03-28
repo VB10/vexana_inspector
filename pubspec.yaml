@@ -3,10 +3,15 @@ description: Vexana Inspector is a package that helps you to debug your network 
 version: 2.0.0-dev1
 homepage: https://pub.dev/publishers/vb10.dev
 repository: https://github.com/VB10/vexana_inspector
+issue_tracker: https://github.com/VB10/vexana_inspector/issues
+screenshots:
+  - description: 'Vexana Inspector usage'
+    path: github/example.png
 
 environment:
   sdk: '>=3.2.1 <4.0.0'
   flutter: ">=1.17.0"
+  
 dependencies:
   flutter:
     sdk: flutter

@@ -1,90 +1,42 @@
 Applications with basic implementation will be able to access dashboards for network requests made by this library.
 
-## Features
+| Example    | Usage |
+| -------- | ------- |
+| <!-- ![inspector](./github/inspect.gif) -->
+<img src="./github/inspect.gif" alt="drawing" width="200"/>  | <img src="./github/example.png" alt="drawing" width="400"/>  | 
 
-## Dashboard open
+  
 
-Once the implementation is complete, you can just call the open function with the inspector instance.
+
+# How to use
+
+Just wrap your root widget with the VexanaInspect widget and set the isEnableShake property to true. This will allow you to open the dashboard by shaking your phone.
+
+> You should install [Vexana](https://pub.dev/packages/vexana) before you can use this package.
 
 ```dart
-    InspectorManager.open();
-```
-
-### Dashboard open with shake
-
-The dashboard can also be opened by shaking.
-
-```dart
-   NetworkDetailView(
+VexanaInspect(
       isEnableShake: true,
       child: MaterialApp(
-        ..
-      ),);
+      // Have to implement this line
+      navigatorObservers: [InspectorManager.navigatorObserver]
+      )
+  ,);
 ```
 
-## Getting started
 
-It's as simple as implementing these steps in the package you're using. Basically, it watches your network requests.
+## Inspector open manually 
 
-> You must install [Vexana](https://pub.dev/packages/vexana) before you can use this package.
-
-## Usage
-
-Add widgets that represent your root view or what you want to listen to. After that, create a material widget with a navigation observer property.
+Once the implementation is complete, you can just call the open function with the inspector instance. Instead of shake option. 
+Your project can work with any button or etc with this function.
 
 ```dart
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return NetworkDetailView(
-      isEnableShake: true,
-      child: MaterialApp(
-        navigatorObservers: [InspectorManager.navigatorObserver],
-        title: 'Material App',
-        home: const JsonPlaceHolder(),
-      ),
-    );
-  }
-}
-
-```
-
-This code can [InspectorManager.open();] the dashboard anywhere, for example, on double tapping or right swiping.
-
-```dart
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragEnd: (DragEndDetails details) {
-        final velocity = details.primaryVelocity ?? 0;
-        if (velocity > 0) {
-          // User swiped Left
-        } else if (velocity < 0) {
-          // User swiped Right
-          InspectorManager.open();
-        }
-      },
-      onTertiaryTapUp: (tapDetails) {
-        InspectorManager.open();
-      },
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            getAllPosts();
-            // InspectorManager.open();
-          },
-        ),
-        appBar: buildAppBar(),
-        body: buildListView(),
-      ),
-    );
-  }
+InspectorManager.open();
 ```
 
 ## Additional information
 
+You can found a sample in [example](example/lib/main.dart) folder.
 Please add your thoughts to an issue or PR review and I will merge it as soon as possible.
 
 ## License
