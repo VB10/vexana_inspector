@@ -11,6 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VexanaInspect(
+      /// enable or disable shake gesture to open inspector
+      /// custom with InspectorManager.open() method
+      isShakeEnabled: true,
       child: MaterialApp(
         navigatorObservers: [InspectorManager.navigatorObserver],
         title: 'Material App',

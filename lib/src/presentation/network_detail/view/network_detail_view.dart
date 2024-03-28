@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_cubit.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_state.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/view/mixin/network_detail_view_mixin.dart';
-import 'package:vexana_inspector/vexana_inspector.dart';
 
 /// NetworkDetailView is a widget that wraps your app and provides a way to
 /// inspect network requests.
