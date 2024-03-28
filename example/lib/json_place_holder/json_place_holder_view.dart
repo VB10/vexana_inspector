@@ -4,30 +4,25 @@ import './json_place_holder_view_model.dart';
 
 class JsonPlaceHolderView extends JsonPlaceHolderViewModel {
   @override
+  void initState() {
+    super.initState();
+    getAllPosts();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragEnd: (DragEndDetails details) {
-        final velocity = details.primaryVelocity ?? 0;
-        if (velocity > 0) {
-          // User swiped Left
-        } else if (velocity < 0) {
-          // User swiped Right
-          InspectorManager.open();
-        }
-      },
-      onTertiaryTapUp: (tapDetails) {
-        InspectorManager.open();
-      },
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            getAllPosts();
-            // InspectorManager.open();
-          },
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text('inspector'),
         ),
-        appBar: buildAppBar(),
-        body: buildListView(),
+        onPressed: () {
+          InspectorManager.open();
+        },
       ),
+      appBar: buildAppBar(),
+      body: buildListView(),
     );
   }
 

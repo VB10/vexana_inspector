@@ -1,16 +1,23 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-class DioCustomInterceptors extends Interceptor {
-  final ValueChanged<Response<dynamic>> onResponseChanged;
-  final ValueChanged<DioError> onErrorChanged;
-  final ValueChanged<RequestOptions> onRequestChanged;
+/// Interceptor for logging request, response and error
+final class DioCustomInterceptors extends Interceptor {
+  /// Constructor for [DioCustomInterceptors]
   DioCustomInterceptors({
     required this.onResponseChanged,
     required this.onErrorChanged,
     required this.onRequestChanged,
   });
+
+  /// Callback for response
+  final ValueChanged<Response<dynamic>> onResponseChanged;
+
+  /// Callback for error
+  final ValueChanged<DioException> onErrorChanged;
+
+  /// Callback for request
+  final ValueChanged<RequestOptions> onRequestChanged;
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -28,7 +35,7 @@ class DioCustomInterceptors extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     super.onError(err, handler);
     onErrorChanged.call(err);
   }

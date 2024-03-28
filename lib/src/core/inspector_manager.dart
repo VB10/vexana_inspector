@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:vexana_inspector/src/core/dio_custom_interceptor.dart';
 
 import 'package:vexana_inspector/src/core/inspector_detail.dart';
-import 'package:vexana_inspector/vexana_inspector.dart';
 
 @immutable
 
 /// It class helps to manage the network inspector
-/// You just call the [InspectorManager.instance] to access the [DioCustomInterceptors]
-class InspectorManager {
+/// You just call the [InspectorManager.instance] to access the
+/// [DioCustomInterceptors]
+final class InspectorManager {
   InspectorManager._();
 
   /// Creates a new instance of the NavigatorObserver class.
@@ -20,7 +20,8 @@ class InspectorManager {
   static final InspectorManager instance = InspectorManager._();
   static final InspectorDetail _detail = InspectorDetail.instance;
 
-  /// [DioCustomInterceptors] is a class that allows us to intercept the request,
+  /// [DioCustomInterceptors] is a class that allows us to intercept
+  /// the request,
   ///  response and error
   /// and we can use it to add to our cubit
   /// that way we can see the response and error in the detail screen.
