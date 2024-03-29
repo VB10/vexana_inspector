@@ -3,7 +3,7 @@ Applications with basic implementation will be able to access dashboards for net
 | Example    | Usage |
 | -------- | ------- |
 | <!-- ![inspector](./github/inspector_sample.jpeg) -->
-<img src="./github/inspect.gif" alt="drawing" width="200"/>  | <img src="./github/example.png" alt="drawing" width="400"/>  | 
+<img src="https://github.com/VB10/vexana_inspector/blob/main/github/inspector_sample.jpeg?raw=true" alt="Example from app" width="200"/>  | <img src="https://github.com/VB10/vexana_inspector/blob/main/github/example.png?raw=true" alt="code sample" width="400"/>  | 
 
   
 # How to use
