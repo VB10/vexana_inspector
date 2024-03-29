@@ -1,3 +1,21 @@
+
+
+<p align="center">
+<img src="https://i.redd.it/ds3z4kobyp871.jpg" height="50" width="50" alt="Vexana Inspector" /> Vexana Inspector
+</p>
+
+<p align="center">
+<a href="https://pub.dev/packages/vexana_inspector"><img src="https://img.shields.io/pub/v/vexana_inspector.svg" alt="Pub"></a>
+<a href="https://pub.dev/packages/vexana"><img src="https://img.shields.io/badge/vexana-package-blue" alt="Pub"></a>
+<a href="https://github.com/felangel/bloc"><img src="https://img.shields.io/github/stars/vb10/vexana_inspector.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a> 
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>   
+<a href="https://www.youtube.com/hardwareandro"><img src="https://img.shields.io/youtube/channel/subscribers/UCdUaAKTLJrPZFStzEJnpQAg" alt="Youtube: HardwareAndro"></a>
+<a href="https://medium.com/@vbacik-10"> <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium: Vbacik">  </a>  
+[![](https://dcbadge.vercel.app/api/server/sf8S7bga?style=flat)](https://discord.gg/sf8S7bga) 
+
+</p>
+
+
 Applications with basic implementation will be able to access dashboards for network requests made by this library.
 
 | Example    | Usage |
