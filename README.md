@@ -6,8 +6,6 @@ Applications with basic implementation will be able to access dashboards for net
 <img src="./github/inspect.gif" alt="drawing" width="200"/>  | <img src="./github/example.png" alt="drawing" width="400"/>  | 
 
   
-
-
 # How to use
 
 Just wrap your root widget with the VexanaInspect widget and set the isEnableShake property to true. This will allow you to open the dashboard by shaking your phone.
@@ -43,7 +41,7 @@ Please add your thoughts to an issue or PR review and I will merge it as soon as
 
 MIT License
 
-Copyright (c) [2023] [Veli Bacik]
+Copyright (c) [2024] [Veli Bacik]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
