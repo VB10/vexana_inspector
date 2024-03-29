@@ -1,3 +1,7 @@
+# 2.0.0
+- New release version has been updated
+- Many coding fixes and improvements
+
 # 2.0.0-dev2
 - Updated read me file
 

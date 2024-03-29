@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:kartal/kartal.dart';
-import 'package:vexana_inspector/src/presentation/network_detail/view/network_json_view.dart';
+
 import 'package:vexana_inspector/src/manager/http_logger_manager.dart';
+import 'package:vexana_inspector/src/presentation/network_detail/view/network_json_view.dart';
 
 /// NetworkJsonView is a widget that wraps your app and provides a way to
 mixin NetworkJsonViewMixin on State<NetworkJsonView> {

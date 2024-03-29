@@ -2,15 +2,16 @@ Applications with basic implementation will be able to access dashboards for net
 
 | Example    | Usage |
 | -------- | ------- |
-| <!-- ![inspector](./github/inspect.gif) -->
+| <!-- ![inspector](./github/inspector_sample.jpeg) -->
 <img src="./github/inspect.gif" alt="drawing" width="200"/>  | <img src="./github/example.png" alt="drawing" width="400"/>  | 
 
   
 # How to use
 
-Just wrap your root widget with the VexanaInspect widget and set the isEnableShake property to true. This will allow you to open the dashboard by shaking your phone.
+Just wrap your root widget with the VexanaInspect widget and set the isEnableShake property to true. This will allow you to open the dashboard by shaking your phone. Check with this link how it's working on. [Vexana Inspector Video](https://firebasestorage.googleapis.com/v0/b/fluttertr-ead5c.appspot.com/o/inspect.gif?alt=media&token=911f56a1-c4c7-4396-8234-023b84e4cc7b)
 
 > You should install [Vexana](https://pub.dev/packages/vexana) before you can use this package.
+
 
 ```dart
 VexanaInspect(
