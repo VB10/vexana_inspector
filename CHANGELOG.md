@@ -1,4 +1,4 @@
-# 2.1.0
+# 2.2.0
 - New release version has been updated
 - Many coding fixes and improvements
 - Updated package version
