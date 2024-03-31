@@ -36,12 +36,16 @@ Just wrap your root widget with the VexanaInspect widget and set the isEnableSha
 VexanaInspect(
       isEnableShake: true,
       child: MaterialApp(
-      // Have to implement this line
       navigatorObservers: [InspectorManager.navigatorObserver]
       )
   ,);
 ```
 
+Then add vexana interceptor for listening network changes to your manager
+
+```dart
+dioInterceptors.add(InspectorManager.instance.interceptor);
+```
 
 ## Inspector open manually 
 
