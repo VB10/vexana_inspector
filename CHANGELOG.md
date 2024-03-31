@@ -1,3 +1,7 @@
+# 2.2.1
+- Fixed some ui issues
+- Added required information in readme
+
 # 2.2.0
 - New release version has been updated
 - Many coding fixes and improvements
