@@ -11,7 +11,7 @@ import 'package:vexana_inspector/src/presentation/network_detail/widget/status_c
 @immutable
 
 /// NetworkListView is a view that shows the network requests.
-class NetworkListView extends StatelessWidget {
+final class NetworkListView extends StatelessWidget {
   /// Creates a [NetworkListView] widget.
   const NetworkListView({super.key});
 

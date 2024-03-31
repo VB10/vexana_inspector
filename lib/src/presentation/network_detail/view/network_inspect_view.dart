@@ -28,6 +28,7 @@ final class NetworkInspectView extends StatelessWidget {
             SliverAppBar(
               title: const Text(StringValues.networkDetail),
               pinned: true,
+              backgroundColor: Colors.black,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
@@ -36,12 +37,15 @@ final class NetworkInspectView extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: TextField(
-                onChanged: cubit.search,
-                decoration: const InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  prefixIcon: Icon(Icons.search),
+              child: Padding(
+                padding: context.padding.normal,
+                child: TextField(
+                  onChanged: cubit.search,
+                  decoration: const InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    prefixIcon: Icon(Icons.search),
+                  ),
                 ),
               ),
             ),
