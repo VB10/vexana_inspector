@@ -8,7 +8,10 @@
 - Updated package version
 - Updated readme file
 
-# 2.0.0-dev2
+## 2.2.1
+- Updates kartal package version
+
+## 2.0.0-dev2
 - Updated read me file
 
 ## 2.0.0 - dev1
