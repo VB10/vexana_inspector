@@ -17,6 +17,8 @@ final class NetworkJsonView extends StatefulWidget {
 
 class _NetworkJsonViewState extends State<NetworkJsonView>
     with NetworkJsonViewMixin {
+
+      String get _pathFromApiModel => Uri.parse(widget.apiModel.url).path;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,7 @@ class _NetworkJsonViewState extends State<NetworkJsonView>
         centerTitle: false,
         title: FittedBox(
           child: Text(
-            widget.apiModel.name,
+           _pathFromApiModel,
           ),
         ),
         actions: [
