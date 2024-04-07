@@ -26,7 +26,10 @@ dependencies:
   # Utils
   kartal: ^4.0.2
   flutter_json_view: ^1.0.0
-  shake: ^2.2.0
+  shake:
+    git:
+      url: https://github.com/dieringe/shake
+      ref: dieringe
 
 dev_dependencies:
   flutter_test:
