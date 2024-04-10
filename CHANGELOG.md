@@ -1,3 +1,8 @@
+# 2.3.0
+- Updated shake package for better version
+- Removed gesture detector for swipe 
+- Updated detail page open business
+
 # 2.2.2
 - Updates kartal package version
 
