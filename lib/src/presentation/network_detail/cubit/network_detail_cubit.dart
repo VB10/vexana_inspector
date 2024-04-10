@@ -81,15 +81,14 @@ final class NetworkDetailCubit extends Cubit<NetworkDetailState> {
 
   /// Open the detail page.
   void openDetail() {
+    if (state.isDetailPage ?? false) return;
     emit(state.copyWith(isDetailPage: true));
   }
 
   /// Closes the detail page.
   void closeDetail() {
     emit(
-      state.copyWith(
-        isDetailPage: false,
-      ),
+      state.copyWith(isDetailPage: false),
     );
   }
 

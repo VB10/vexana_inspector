@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shake/shake.dart';
 import 'package:vexana_inspector/src/core/inspector_detail.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_cubit.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_state.dart';
@@ -20,13 +19,11 @@ mixin NetworkDetailViewMixin on State<NetworkDetailView> {
     super.initState();
     networkDetailCubit = InspectorDetail.instance.networkDetailCubit;
     navigatorObserver = InspectorManager.navigatorObserver;
-    _checkShakeAbility();
   }
 
-  void _checkShakeAbility() {
-    final isEnableShake = widget.isEnableShake ?? false;
-    if (!isEnableShake) return;
-    ShakeDetector.autoStart(onPhoneShake: networkDetailCubit.openDetail);
+  /// On shake triggered open detail page
+  void onShakeTriggered() {
+    networkDetailCubit.openDetail();
   }
 
   /// Listen network state changes
@@ -45,3 +42,31 @@ mixin NetworkDetailViewMixin on State<NetworkDetailView> {
     }
   }
 }
+
+// enum Limits {
+//   normal(500);
+
+//   final int value;
+//   Limits(this.value);
+// }
+
+// class LimitedText extends StatelessWidget {
+//   const LimitedText({super.key, required this.limit, required this.text});
+//   final Limits limit;
+//   final String text;
+//   final Widget readMore;
+//   @override
+//   Widget build(BuildContext context) {
+//         if (text.length > limit.value) {
+//           return Wrap(
+//             children: [
+//               Text(value, maxLines: null),
+//               readMore,
+//             ],
+//           ;
+//         }
+//     return Text(
+//       value,
+//     );
+//   }
+// }

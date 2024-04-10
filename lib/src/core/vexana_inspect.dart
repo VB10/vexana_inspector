@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/view/network_detail_view.dart';
-import 'package:vexana_inspector/vexana_inspector.dart';
 
 /// VexanaInspect is a widget that wraps your app and provides a way to
 /// inspect network requests.
@@ -23,20 +22,6 @@ final class VexanaInspect extends StatelessWidget {
   final bool isShakeEnabled;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragEnd: (DragEndDetails details) {
-        final velocity = details.primaryVelocity ?? 0;
-        if (velocity > 0) {
-          // User swiped Left
-        } else if (velocity < 0) {
-          // User swiped Right
-          InspectorManager.open();
-        }
-      },
-      onTertiaryTapUp: (tapDetails) {
-        InspectorManager.open();
-      },
-      child: NetworkDetailView(isEnableShake: isShakeEnabled, child: child),
-    );
+    return NetworkDetailView(isEnableShake: isShakeEnabled, child: child);
   }
 }

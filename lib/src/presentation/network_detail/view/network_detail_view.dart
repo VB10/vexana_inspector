@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shake_detector/shake_detector.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_cubit.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_state.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/view/mixin/network_detail_view_mixin.dart';
@@ -33,7 +34,11 @@ class _NetworkDetailViewState extends State<NetworkDetailView>
       create: (context) => networkDetailCubit,
       child: BlocListener<NetworkDetailCubit, NetworkDetailState>(
         listener: (context, state) => listenNetworkStateChanges(state),
-        child: widget.child,
+        child: ShakeDetectWrap(
+          enabled: widget.isEnableShake ?? false,
+          onShake: onShakeTriggered,
+          child: widget.child,
+        ),
       ),
     );
   }
