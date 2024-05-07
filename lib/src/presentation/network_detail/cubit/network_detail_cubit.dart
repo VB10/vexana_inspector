@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 import 'package:vexana_inspector/src/models/api_model.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_state.dart';
+import 'package:vexana_inspector/src/presentation/theme/product_theme.dart';
 import 'package:vexana_inspector/vexana_inspector.dart';
 
 /// It manage network detail page
@@ -13,10 +14,15 @@ final class NetworkDetailCubit extends Cubit<NetworkDetailState> {
   /// Set [InspectorManager] for manage network detail page
   NetworkDetailCubit() : super(const NetworkDetailState());
 
+  /// Update theme for network detail page
+  void updateTheme(ProductTheme theme) {
+    emit(state.copyWith(theme: theme));
+  }
+
   /// Adds a network response to the state
   void addNetworkResponse(Response<dynamic> item) {
     final currentItems = state.items.toList();
-    final index = _findItem(item.requestOptions);
+    final index = findItem(item.requestOptions);
 
     if (index != null) {
       final model = currentItems[index].copyWith(
@@ -34,7 +40,7 @@ final class NetworkDetailCubit extends Cubit<NetworkDetailState> {
 
   void addNetworkError(DioException item) {
     final currentItems = state.items.toList();
-    final index = _findItem(item.requestOptions);
+    final index = findItem(item.requestOptions);
 
     if (index != null) {
       final model = currentItems[index].copyWith(
@@ -92,7 +98,7 @@ final class NetworkDetailCubit extends Cubit<NetworkDetailState> {
     );
   }
 
-  int? _findItem(RequestOptions requestOptions) {
+  int? findItem(RequestOptions requestOptions) {
     final currentItems = state.items.toList();
     final uriWithName = '${requestOptions.uri}/${requestOptions.method}';
     final index = currentItems.ext.indexOrNull(

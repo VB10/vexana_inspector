@@ -21,4 +21,7 @@ final class StringValues {
 
   /// Network Detail title
   static const String shareCurlTitle = 'Share Curl';
+
+  /// Network Search hint
+  static const String hintSearchUrl = 'Search url from network requests';
 }
