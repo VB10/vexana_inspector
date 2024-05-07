@@ -3,6 +3,10 @@
 - Added theme cability for making custom detail view
 - Added some coding fixses.
 
+## 2.4.1
+- Updated readme file
+- Exported ProductTheme.
+
 ## 2.3.0
 - Updated shake package for better version
 - Removed gesture detector for swipe 
