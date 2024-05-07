@@ -4,6 +4,7 @@ import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_d
 import 'package:vexana_inspector/src/presentation/network_detail/cubit/network_detail_state.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/view/network_detail_view.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/view/network_inspect_view.dart';
+import 'package:vexana_inspector/src/presentation/theme/product_theme.dart';
 import 'package:vexana_inspector/vexana_inspector.dart';
 
 /// NetworkDetailView is a widget that wraps your app and provides a way to
@@ -14,10 +15,13 @@ mixin NetworkDetailViewMixin on State<NetworkDetailView> {
   /// NavigatorObserver instance
   late final NavigatorObserver navigatorObserver;
 
+  /// ProductTheme instance
+  ProductTheme get theme;
   @override
   void initState() {
     super.initState();
     networkDetailCubit = InspectorDetail.instance.networkDetailCubit;
+    networkDetailCubit.updateTheme(theme);
     navigatorObserver = InspectorManager.navigatorObserver;
   }
 
@@ -42,31 +46,3 @@ mixin NetworkDetailViewMixin on State<NetworkDetailView> {
     }
   }
 }
-
-// enum Limits {
-//   normal(500);
-
-//   final int value;
-//   Limits(this.value);
-// }
-
-// class LimitedText extends StatelessWidget {
-//   const LimitedText({super.key, required this.limit, required this.text});
-//   final Limits limit;
-//   final String text;
-//   final Widget readMore;
-//   @override
-//   Widget build(BuildContext context) {
-//         if (text.length > limit.value) {
-//           return Wrap(
-//             children: [
-//               Text(value, maxLines: null),
-//               readMore,
-//             ],
-//           ;
-//         }
-//     return Text(
-//       value,
-//     );
-//   }
-// }

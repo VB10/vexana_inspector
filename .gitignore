@@ -6,6 +6,8 @@ build/
 packages
 .packages
 
+.vscode/
+
 # Or the files created by dart2js.
 *.dart.js
 *.js_
@@ -14,3 +16,10 @@ packages
 
 # Include when developing application packages.
 pubspec.lock
+.flutter-plugins-dependencies
+ios/Flutter/Generated.xcconfig
+macos/Flutter/ephemeral/Flutter-Generated.xcconfig
+macos/Flutter/ephemeral/flutter_export_environment.sh
+ios/Flutter/flutter_export_environment.sh
+.metadata
+.idea

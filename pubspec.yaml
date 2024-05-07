@@ -1,6 +1,6 @@
 name: vexana_inspector
 description: Vexana Inspector is a package that helps you to debug your network requests.
-version: 2.3.0
+version: 2.4.1
 homepage: https://pub.dev/publishers/vb10.dev
 repository: https://github.com/VB10/vexana_inspector
 issue_tracker: https://github.com/VB10/vexana_inspector/issues
