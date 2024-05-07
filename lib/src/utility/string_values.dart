@@ -24,4 +24,10 @@ final class StringValues {
 
   /// Network Search hint
   static const String hintSearchUrl = 'Search url from network requests';
+
+  /// Network response title
+  static const String responseTitle = 'Response';
+
+  /// Network request title
+  static const String requestTitle = 'Request';
 }

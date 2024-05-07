@@ -29,23 +29,9 @@ class _NetworkJsonViewState extends State<NetworkJsonView>
           ),
         ),
         actions: [
-          PopupMenuButton(
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem<void>(
-                  child: TextButton(
-                    onPressed: shareJsonBody,
-                    child: const Text(StringValues.shareJsonTitle),
-                  ),
-                ),
-                PopupMenuItem<void>(
-                  child: TextButton(
-                    onPressed: shareCurlBody,
-                    child: const Text(StringValues.shareCurlTitle),
-                  ),
-                ),
-              ];
-            },
+          _PopupShareButton(
+            onShareJsonBodyPressed: shareJsonBody,
+            onShareCurlBodyPressed: shareCurlBody,
           ),
         ],
       ),
@@ -53,31 +39,90 @@ class _NetworkJsonViewState extends State<NetworkJsonView>
         length: 2,
         child: Column(
           children: [
-            const TabBar(
-              tabs: [
-                Tab(
-                  text: 'Response',
-                ),
-                Tab(
-                  text: 'Request',
-                ),
-              ],
-            ),
+            const _TabBar(),
             Expanded(
-              child: TabBarView(
-                children: [
-                  JsonView.string(
-                    responseBody,
-                  ),
-                  JsonView.map(
-                    makeARequestString,
-                  ),
-                ],
+              child: _TabBody(
+                responseBody: responseBody,
+                makeARequestString: makeARequestString,
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+final class _PopupShareButton extends StatelessWidget {
+  const _PopupShareButton({
+    required this.onShareJsonBodyPressed,
+    required this.onShareCurlBodyPressed,
+  });
+
+  final VoidCallback onShareJsonBodyPressed;
+  final VoidCallback onShareCurlBodyPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+      itemBuilder: (context) {
+        return [
+          PopupMenuItem<void>(
+            child: TextButton(
+              onPressed: onShareJsonBodyPressed,
+              child: const Text(StringValues.shareJsonTitle),
+            ),
+          ),
+          PopupMenuItem<void>(
+            child: TextButton(
+              onPressed: onShareCurlBodyPressed,
+              child: const Text(StringValues.shareCurlTitle),
+            ),
+          ),
+        ];
+      },
+    );
+  }
+}
+
+final class _TabBar extends StatelessWidget {
+  const _TabBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return const TabBar(
+      tabs: [
+        Tab(
+          text: StringValues.responseTitle,
+        ),
+        Tab(
+          text: StringValues.requestTitle,
+        ),
+      ],
+    );
+  }
+}
+
+final class _TabBody extends StatelessWidget {
+  const _TabBody({
+    required this.responseBody,
+    required this.makeARequestString,
+  });
+
+  final String responseBody;
+  final Map<String, dynamic> makeARequestString;
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBarView(
+      children: [
+        JsonView.string(
+          responseBody,
+        ),
+        JsonView.map(
+          makeARequestString,
+        ),
+      ],
     );
   }
 }
