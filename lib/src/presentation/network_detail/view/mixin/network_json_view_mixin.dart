@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:kartal/kartal.dart';
-
 import 'package:vexana_inspector/src/manager/http_logger_manager.dart';
 import 'package:vexana_inspector/src/presentation/network_detail/view/network_json_view.dart';
 
@@ -19,5 +18,19 @@ mixin NetworkJsonViewMixin on State<NetworkJsonView> {
 
     if (!mounted) return;
     await context.route.pop();
+  }
+
+  /// Get response body
+  String get responseBody => widget.apiModel.body;
+
+  /// Make a request string
+  Map<String, dynamic> get makeARequestString {
+    final requestBody = <String, dynamic>{
+      'Url': widget.apiModel.url,
+      'Method': widget.apiModel.method,
+      'Headers': widget.apiModel.headers,
+    };
+
+    return requestBody;
   }
 }

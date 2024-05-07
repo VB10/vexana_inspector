@@ -17,8 +17,7 @@ final class NetworkJsonView extends StatefulWidget {
 
 class _NetworkJsonViewState extends State<NetworkJsonView>
     with NetworkJsonViewMixin {
-
-      String get _pathFromApiModel => Uri.parse(widget.apiModel.url).path;
+  String get _pathFromApiModel => Uri.parse(widget.apiModel.url).path;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,7 @@ class _NetworkJsonViewState extends State<NetworkJsonView>
         centerTitle: false,
         title: FittedBox(
           child: Text(
-           _pathFromApiModel,
+            _pathFromApiModel,
           ),
         ),
         actions: [
@@ -50,7 +49,35 @@ class _NetworkJsonViewState extends State<NetworkJsonView>
           ),
         ],
       ),
-      body: JsonView.string(widget.apiModel.body),
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: [
+            const TabBar(
+              tabs: [
+                Tab(
+                  text: 'Response',
+                ),
+                Tab(
+                  text: 'Request',
+                ),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  JsonView.string(
+                    responseBody,
+                  ),
+                  JsonView.map(
+                    makeARequestString,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
