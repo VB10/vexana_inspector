@@ -35,6 +35,7 @@ Just wrap your root widget with the VexanaInspect widget and set the isEnableSha
 ```dart
 VexanaInspect(
       isEnableShake: true,
+    //  theme: BasicProductTheme(),
       child: MaterialApp(
       navigatorObservers: [InspectorManager.navigatorObserver]
       )
@@ -54,6 +55,31 @@ Your project can work with any button or etc with this function.
 
 ```dart
 InspectorManager.open();
+```
+
+## Theme 
+
+You can customize your network detail page by using ProductTheme. If you're not define
+theme, it will use default one(BasicProductTheme).
+
+```dart
+final class BasicProductTheme implements ProductTheme {
+  const BasicProductTheme();
+  @override
+  Color get backgroud => Colors.white10;
+
+  @override
+  Color get cardBackgroud => Colors.red;
+
+  @override
+  Color get cardTextColor => Colors.white;
+
+  @override
+  Color get searchBackgroud => Colors.black;
+
+  @override
+  Color get searchTextColor => Colors.white;
+}
 ```
 
 ## Additional information
